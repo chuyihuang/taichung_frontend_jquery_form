@@ -1,0 +1,10 @@
+//購物車table
+h1{購物車表單}+table>(tr>th*5)(tr*3>(td{$}>a[href=#].remove{移除})(td*4))(tr>td.sum-text[colspan=4]{總計:}+td#sum)
+
+
+//選擇表單
+select>option[value=$]{$}*10
+
+//訂單form
+
+form>(p>label{購買人姓名:}+input:t)(p>label{購買人電話:}+input:t)(p>label{購買人地址:}+input:t)(p>input:c{同購買人})(p>label{收件人姓名:}+input:t)(p>label{收件人電話:}+input:t)(p>label{收件人地址:}+input:t)(p>input:s[value=確認送出])

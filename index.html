@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery基礎教學 - 台中前端社群</title>
+
+		<meta name="description" content="台中前端社群">
+		<meta name="author" content="HCY">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+		<link rel="stylesheet" href="css/mystyle.css">
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="./css/font-awesome.min.css">
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<!-- slides -->
+				<section>
+					<h1><i class="fa fa-bullhorn"></i> 台中前端社群</h1>
+					<h4>Taichung Frontend Group</h4>
+					<p>
+						<strong><a href="#">Workshop #2</a></strong>
+					</p>
+				</section>
+				<section>
+					<h2>jQuery教學</h2>
+					<h3>以jQuery運用在表單上為例</h3>
+				</section>
+				<section>
+					<h2 style="letter-spacing:0.2em;">社團核心團隊與助教介紹</h2>
+					<ul style="list-style-type: none;">
+						<li class="more_space2"><i class="fa fa-user"></i>黃竹藝 (Chuyi)</li>
+						<li class="more_space2"><i class="fa fa-user"></i>Cash Wu</li>
+						<li class="more_space2"><i class="fa fa-user"></i>賴建凱(鬼才凱)</li>
+						<li class="more_space2"><i class="fa fa-user"></i>Flora Hsu (桃花)</li>
+					</ul>
+				</section>
+				<section>
+					<h2>什麼是jQuery?</h2>
+					<h3 class="fragment">JS的函式庫，簡化HTML與JavaScript之間的操作。</h3>
+					<h4 class="fragment">== OK，知道這個就夠了 ==</h4>
+				</section>
+				<section>
+					<h2>今日流程(120 mins)</h2>
+					<table style="width:100%;background:#fff;">
+						<tr>
+							<td style="border:1px solid #bbb;text-align:right;">需求介紹與DEMO:</td>
+							<td style="border:1px solid #bbb">5 mins</td>
+						</tr>
+						<tr>
+							<td style="border:1px solid #bbb;text-align:right;">下載/安裝jQuery:</td>
+							<td style="border:1px solid #bbb">10 mins <i class="fa fa-rocket red"></i></td>
+						</tr>
+						<tr>
+							<td style="border:1px solid #bbb;text-align:right;">環境與HTML建構:</td>
+							<td style="border:1px solid #bbb">5 mins <i class="fa fa-rocket red"></i></td>
+						</tr>
+						<tr>
+							<td style="border:1px solid #bbb;text-align:right;">js基本語法 針對本次教學的部份:</td>
+							<td style="border:1px solid #bbb">10 mins </td>
+						</tr>
+						<tr>
+							<td style="border:1px solid #bbb;text-align:right;">jQ基本語法與選擇器:</td>
+							<td style="border:1px solid #bbb">10 mins </td>
+						</tr>
+						<tr>
+							<td style="border:1px solid #bbb;text-align:right;">休息與Social:</td>
+							<td style="border:1px solid #bbb">15 mins</td>
+						</tr>
+						<tr>
+							<td style="border:1px solid #bbb;text-align:right;">取得資料與列印結果:</td>
+							<td style="border:1px solid #bbb">10mins <i class="fa fa-rocket red"></i></td>
+						</tr>
+						<tr>
+							<td style="border:1px solid #bbb;text-align:right;">了解Events:</td>
+							<td style="border:1px solid #bbb">10 mins</td>
+						</tr>
+						<tr>
+							<td style="border:1px solid #bbb;text-align:right;">實際操作DEMO:</td>
+							<td style="border:1px solid #bbb">10 mins</td>
+						</tr>
+						<tr>
+							<td style="border:1px solid #bbb;text-align:right;">現場操作:</td>
+							<td style="border:1px solid #bbb">30 mins <i class="fa fa-rocket red"></i></td>
+						</tr>
+						<tr>
+							<td style="border:1px solid #bbb;text-align:right;">Q & A</td>
+							<td style="border:1px solid #bbb">預告下次活動</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h2>本Workshop目標</h2>
+					<ul>
+						<li>使用console模式查找節點(node)</li>
+						<li>學習如何使用選擇器(selector)</li>
+						<li>了解jQuery事件(events)</li>
+						<li>以最基礎的方式學習，如果您已經會了，請協助旁邊的夥伴</li>
+					</ul>
+				</section>
+				<section>
+					<h2>需求：購物車的結帳系統</h2>
+					<ul style="list-style-type: none;">
+						<li class="more_space2"><i class="fa fa-check-square-o"></i>改變商品數量時能夠改變小計金額</li>
+						<li class="more_space2"><i class="fa fa-check-square-o"></i>小計金額改變時總金額也能夠改變</li>
+						<li class="more_space2"><i class="fa fa-check-square-o"></i>按下移除鈕時商品從列表中刪除，同時改變總金額</li>
+						<li class="more_space2"><i class="fa fa-check-square-o"></i>勾選同訂購人的方塊，能夠將資料轉到收件人</li>
+						<li class="more_space2"><i class="fa fa-check-square-o"></i>按下"確認訂單"後跳出成功訊息</li>
+					</ul>
+				</section>
+				<section>
+					<h2>DEMO成品</h2>
+				</section>
+				<section>
+					<h2>下載/安裝jQuery</h2>
+					<ul style="list-style-type: none;">
+						<li style="letter-spacing:0.1em"><i class="fa fa-arrow-circle-o-right"></i>版本的不同: V1.11與V2.1的主要差別 <span class="red fragment">IE8 must die!</span></li>
+						<li style="letter-spacing:0.1em"><i class="fa fa-arrow-circle-o-right"></i>壓縮production與未壓縮development的不同</li>
+						<li style="letter-spacing:0.1em"><i class="fa fa-arrow-circle-o-right"></i>下載掛在本機與CDN的不同 <span class="red fragment">開發時使用本機</span></li>
+						<li style="letter-spacing:0.1em"><i class="fa fa-arrow-circle-o-right"></i>在head裡面還是在body尾部? <span class="red fragment">頁面顯示優先</span></li>
+					</ul>
+				</section>
+				<section>
+					<h3>請還未下載的夥伴開始下載 <i class="fa fa-rocket red"></i></h3>
+					<h4>jQuery下載頁面: <a href="http://jquery.com/download/">http://jquery.com/download/</a></h4>
+					<img src="./images/download_jquery.png" alt="">
+				</section>
+				<section>
+					<h2>環境與HTML建構<i class="fa fa-rocket red"></i></h2>
+					<ul style="list-style-type: none;">
+						<li style="letter-spacing:0.1em"><i class="fa fa-arrow-circle-o-right"></i>html碼: <a href="http://goo.gl/Ybbx1X">http://goo.gl/Ybbx1X</a></li>
+						<li style="letter-spacing:0.1em"><i class="fa fa-arrow-circle-o-right"></i>安裝jQuery: 採用1.11的production版，放置於body結束前</li>
+					</ul>
+				</section>
+				<section>
+					<h2>js基本語法: 針對本次教學</h2>
+					<ul class="lstn">
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>宣告變數</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>邏輯判斷</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>加減乘除</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>function</li>
+					</ul>
+				</section>
+				<section>
+					<h2>宣告變數</h2>
+					<ul class="lstn">
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>使用關鍵字var: 例如var price, qty...</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>數字不可在前。例如: name99與<span class="red">99name</span></li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>命名的慣例: price, itemPrice</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>切記別取x,y或abc123之類意義不明的名稱</li>
+					</ul>
+				</section>
+				<section>
+					<h2>邏輯判斷</h2>
+					<ul class="lstn">
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>true與false</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>使用if (true or false) {...}</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>使用 else if {...} 與 else {...}</li>
+						<img src="./images/if_else.png" alt="" class="fragment">
+					</ul>
+				</section>
+				<section>
+					<h2>加減乘除</h2>
+					<ul class="lstn">
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right">+ - * / %</i></li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right">數字加數字=數字: 3 + 5 = 8</i></li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>文字加數字=文字: "3" + 3 = "33"</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>文字(數字)減數字=數字: "3" - 1 = 2</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>文字(文字)減文字=NaN</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>Console範例</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Function 函數</h2>
+					<ul class="lstn">
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>將重複使用的程式碼獨立出來</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>使用關鍵字function，將程式碼放在{...}</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>function abc() {...}</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>var abc = function() {...} 與上一行相同</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>使用方式: abc(arg) <span class="red">//arg為參數</span></li>
+					</ul>
+				</section>
+				<section>
+					<h2>jQuery語法簡介 (10 mins)</h2>
+					<ul class="lstn">
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>如何判斷jQuery已經載入?(demo)</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>jQuery 與 $</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>document.ready 或 $()</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>jQuery的基本語法</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>選擇器的使用</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>設定(set)與取得(get)</li>
+					</ul>
+				</section>
+				<section>
+					<h2>jQuery基本語法</h2>
+					<img src="./images/jquery_show1.png" alt="">
+				</section>
+				<section>
+					<h2>選擇器的使用</h2>
+					<ul class="lstn">
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>css選擇器: tag名稱, id = #, class = .</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>以$(...)包裝成jQuery物件</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>條件選擇: eq(), nth-child(), :not(), first(), last()</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>節點轉換: parents(), children(), find(), closet()...</li>
+						<li class="more_space2 fragment red"><i class="fa fa-arrow-circle-o-right"></i>太多了!參考jQuery API: selectors</li>
+					</ul>
+				</section>
+				<section>
+					<h2>設定與取得</h2>
+					<ul class="lstn">
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>取得標籤內容: text()</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>取得input內容: val()</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>設定標籤內容: text('我是內容')</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>設定input內容: val('我是內容')</li>
+					</ul>
+				</section>
+				<section>
+					<h2>休息時間...</h2>
+				</section>
+				<section>
+					<h2>取得資料與列印結果</h2>
+					<ul class="lstn">
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>命令列模式下的console.log()</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>以取得第二個tr的第三個td內容為例</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>以取得第二個tr的下拉數量為例</li>
+					</ul>
+				</section>
+				<section>
+					<h2>了解Events</h2>
+					<ul class="lstn">
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right">使用者與DOM的互動</i></li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right">例如:滑鼠按下, 欄位改變, 鍵盤按下, 視窗大小改變...</i></li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>demo會用到的: change, click, submit</li>
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right"></i>參考: <a href="http://api.jquery.com/category/events">http://api.jquery.com/category/events</a></li>
+					</ul>
+				</section>
+				<section>
+					<h2>實際操作DEMO</h2>
+					<ul class="lstn">
+						<li class="more_space2"><i class="fa fa-arrow-circle-o-right">設定需要取得與設定的selectors</i></li>
+						<li class="more_space2"><i class="fa fa-check-square-o"></i>改變商品數量時能夠改變小計金額</li>
+						<li class="more_space2"><i class="fa fa-check-square-o"></i>小計金額改變時總金額也能夠改變</li>
+						<li class="more_space2"><i class="fa fa-check-square-o"></i>按下移除鈕時商品從列表中刪除，同時改變總金額</li>
+						<li class="more_space2"><i class="fa fa-check-square-o"></i>勾選同訂購人的方塊，能夠將資料轉到收件人</li>
+						<li class="more_space2"><i class="fa fa-check-square-o"></i>按下"確認訂單"後跳出成功訊息</li>
+					</ul>
+				</section>
+				<section>
+					<h2>實際動手操作<i class="fa fa-rocket red"></i></h2>
+					<ul class="lstn">
+						<li class="more_space2">進階1: 購買人或收件人資料空白時跳警告</li>
+						<li class="more_space2">進階2: 全部移除(清空購物車)時跳警告</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Thank You</h2>
+					<div>請填寫問卷: <a href="http://goo.gl/PLxlkn">http://goo.gl/PLxlkn</a></div>
+					<img src="./images/clap.jpg" alt="" class="fragment">
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+	</body>
+</html>
